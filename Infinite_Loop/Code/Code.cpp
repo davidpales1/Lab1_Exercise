@@ -1,27 +1,58 @@
 // Lab 1.3.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
+#include <string>
 
 #include <iostream>
+#include <sstream>
+
 using namespace std;
 
+// function to check if the value is number
+bool isNumber(string s)
+{
+    std::stringstream ss(s);
+    float x;
+    return (ss >> x) && ss.eof();
+}
 int main()
 {
 	int choice = 0;
 
 	string name = "";
-	string age = "";
-	string occup = "";
+	// this should be an int
+	//string age = "";
+	// to fix change string to int and change it's default value to null
+	int age = 0;
+	// occupation  has misspelling that's my vs editor told me
+	string occupation = "";
 
 	while (choice != -1)
 	{
-		cout << "-1: Exit\n";
-		cout << "1: Enter Name\n";
-		cout << "2: Enter Age\n";
-		cout << "3: Enter Occupation\n";
-		cin >> choice;
+		// reset value
+		string input= "";
+		choice= 0;
 
-		/*if (choice == -1)
-			break;*/
+		cout << "-1: Exit\n" << endl;
+		cout << "1: Enter Name\n" << endl;
+		cout << "2: Enter age\n" << endl;
+		cout << "3: Enter Occupation\n" << endl;
+				
+		// this cin get the input as a number so it may case error if the user input a text by mistake
+		//cin >> choice;
+		
+		// while getline function read the whole line as a string
+		getline(cin,input);
+		
+		// after reading the line we have to make sure that's it's a Number
+		if (isNumber(input))
+		{
+			// if it's a number it will convert it to integer and give it's value to choice 
+			choice = stoi(input);
+		};
+		
+		// that was commented so this is way it wasn't working when inputting -1 
+		if (choice == -1)
+			break;
 
 		switch (choice)
 		{
@@ -31,24 +62,36 @@ int main()
 			break;
 		case 2:
 			cout << "What is your Age? ";
-			cin >> age;
+			getline(cin,input);
+			if (isNumber(input))
+			{
+				// if it's a number it will convert it to integer and give it's value to age 
+				age = stoi(input);
+			}
+			else // if it's not an integer it will print erro message.
+			{
+				cout << "that wasn't an integer!\n";
+			};
+			
+
 			break;
 		case 3:
 			cout << "What is your Occupation? ";
-			cin >> occup;
+			cin >> occupation;
 			break;
 		default:
 			// Assume Invalid Menu Choice
 			cout << "Sorry that choice is not valid!";
-			break;
+			continue;
 		}
 	}
 
 	age += 1;
 
-	cout << "Thank you for using our application, " << name << " and hope your career in " << occup << " is successful.";
+	cout << "Thank you for using our application, " << name << " and hope your career in " << occupation << " is successful.";
 	cout << "Hope your " << age << " birthday will enjoyable and exciting";
-
+	cout << "press enter to close the app!";
+	cin >> occupation;
 	return 0;
 }
 

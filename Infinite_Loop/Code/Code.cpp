@@ -38,7 +38,7 @@ int main()
 		cout << "3: Enter Occupation\n" << endl;
 				
 		// this cin get the input as a number so it may case error if the user input a text by mistake
-		cin >> choice;
+		//cin >> choice;
 		
 		// while getline function read the whole line as a string
 		getline(cin,input);
@@ -58,7 +58,7 @@ int main()
 		{
 		case 1:
 			cout << "What is your Name: ";
-			cin >> name;
+			getline(cin, name);
 			break;
 		case 2:
 			cout << "What is your Age? ";
@@ -77,7 +77,7 @@ int main()
 			break;
 		case 3:
 			cout << "What is your Occupation? ";
-			cin >> occupation;
+			getline(cin, occupation);
 			break;
 		default:
 			// Assume Invalid Menu Choice

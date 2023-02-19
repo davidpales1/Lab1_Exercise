@@ -38,7 +38,7 @@ int main()
 		cout << "3: Enter Occupation\n" << endl;
 				
 		// this cin get the input as a number so it may case error if the user input a text by mistake
-		//cin >> choice;
+		cin >> choice;
 		
 		// while getline function read the whole line as a string
 		getline(cin,input);
